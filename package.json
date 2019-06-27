@@ -8,20 +8,25 @@
     "build": "webpack --config webpack.prod.js",
     "dev": "webpack-dev-server --config webpack.dev.js --open"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lib-flexible": "^0.3.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
+    "chai": "^4.2.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.0.0",
     "cssnano": "^4.1.10",
     "file-loader": "^4.0.0",
+    "glob": "^7.1.4",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.7.0",
     "mocha": "^6.1.4",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "raw-loader": "^0.5.1",
     "style-loader": "^0.23.1",
     "url-loader": "^2.0.0",
     "webpack": "^4.35.0",

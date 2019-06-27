@@ -1,14 +1,49 @@
 'use strict'
 
+const glob = require('glob')
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const setMPA = () => {
+  const entry = {}
+  const htmlWebpackPlugins = []
+  const entryFiles = glob.sync(path.join(__dirname, './test/*/index.js'))
+
+  Object.keys(entryFiles)
+    .map(index => {
+      const entryFile = entryFiles[index]
+      const match = entryFile.match(/\/test\/(.*)\/index\.js/)
+      const pageName = match && match[1]
+
+      entry[pageName] = entryFile
+      htmlWebpackPlugins.push(new HtmlWebpackPlugin({
+        title: `algorithm-training-${pageName}`,
+        template: path.join(__dirname, `test/${pageName}/index.html`),
+        filename: `${pageName}.html`,
+        chunks: [pageName],
+        inject: true,
+        minify: {
+          html5: true,
+          collapseWhitespace: true,
+          preserveLineBreaks: false,
+          minifyCSS: true,
+          minifyJS: true,
+          removeComments: false
+        }
+      }))
+    })
+
+  return {
+    entry,
+    htmlWebpackPlugins
+  }
+}
+
+const { entry, htmlWebpackPlugins } = setMPA()
+
 module.exports = {
-  entry: {
-    index: './src/index.js',
-    test: './test/index.js'
-  },
+  entry: Object.assign({ index: './src/index.js' }, entry),
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js'
@@ -60,14 +95,8 @@ module.exports = {
       template: path.join(__dirname, 'src/index.html'),
       filename: 'index.html',
       chunks: ['index']
-    }),
-    new HtmlWebpackPlugin({
-      title: 'algorithm-training-test',
-      template: path.join(__dirname, 'test/index.html'),
-      filename: 'test.html',
-      chunks: ['test']
     })
-  ],
+  ].concat(htmlWebpackPlugins),
   devServer: {
     contentBase: './dest',
     hot: true

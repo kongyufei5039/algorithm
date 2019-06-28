@@ -3,21 +3,21 @@
  * 2）链表中存储 任意 类型数据
  */
 
-class Node {
+export class Node {
   constructor (element) {
     this.element = element
     this.next = null
   }
 }
 
-export default class LinkedList {
+export class LinkedList {
   constructor () {
     this.head = new Node('head')
   }
 
   // 根据 value 查找节点
   findByValue (item) {
-    let currentNode = this.head.next
+    let currentNode = this.head
     while (currentNode !== null && currentNode.element !== item) {
       currentNode = currentNode.next
     }
@@ -26,7 +26,7 @@ export default class LinkedList {
 
   // 根据 index 查找节点，下标从 0 开始
   findByIndex (index) {
-    let currentNode = this.head.next
+    let currentNode = this.head
     let pos = 0
     while (currentNode !== null && pos !== index) {
       currentNode  = currentNode.next

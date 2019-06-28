@@ -21,7 +21,7 @@ const setMPA = () => {
 
       entry[pageName] = entryFile
       htmlWebpackPlugins.push(new HtmlWebpackPlugin({
-        title: `algorithm-training-${pageName}`,
+        title: pageName,
         template: path.join(__dirname, `test/${pageName}/index.html`),
         filename: `${pageName}.html`,
         chunks: [pageName],

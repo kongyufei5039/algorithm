@@ -1,5 +1,5 @@
 const assert = require('assert')
-import LinkedList from '@/linkedlist/SingleLinkedList.js'
+import { LinkedList } from '@/linkedlist/SingleLinkedList.js'
 
 const LList = new LinkedList()
 LList.append('chen')
@@ -7,7 +7,7 @@ LList.append('curry')
 LList.append('sang')
 LList.append('zhao')
 
-describe("链表默认数据", () => {
+describe("链表初始化数据", () => {
   it("链表数据：chen -> curry -> sang -> zhao", () => {
     assert.equal(LList.display().join(' -> '), 'chen -> curry -> sang -> zhao')
   })
@@ -20,8 +20,8 @@ describe('根据 value 查找节点', () => {
 })
 
 describe('根据 index 查找节点', () => {
-  it("LList.findByIndex(2) 结果为：sang", () => {
-    assert.equal(LList.findByIndex(2).element, 'sang')
+  it("LList.findByIndex(2) 结果为：curry", () => {
+    assert.equal(LList.findByIndex(2).element, 'curry')
   })
 })
 

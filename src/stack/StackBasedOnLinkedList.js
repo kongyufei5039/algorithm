@@ -14,6 +14,7 @@ export class StackBasedLinkedList {
     this.top = null
   }
 
+  // 入栈
   push(value) {
     const node = new Node(value)
     if (this.top === null) {
@@ -24,6 +25,7 @@ export class StackBasedLinkedList {
     }
   }
 
+  // 出栈
   pop() {
     if (this.top === null) {
       return -1

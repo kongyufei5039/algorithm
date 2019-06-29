@@ -1,7 +1,7 @@
 import assert from 'assert'
 import { SampleBrowser } from '@/stack/SampleBrowser'
 
-describe('普通浏览页面', () => {
+describe('基于栈实现浏览器的前进后退功能', () => {
   const browser = new SampleBrowser()
   it('浏览谷歌页面', () => {
     browser.pushNormal('www.google.com')

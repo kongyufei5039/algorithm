@@ -1,6 +1,5 @@
 # algorithm-training
-数据结构与算法练习  
-[test](#tesst)
+数据结构与算法练习
 
 ## Getting started
 

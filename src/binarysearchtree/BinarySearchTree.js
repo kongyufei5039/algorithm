@@ -15,12 +15,30 @@ class BinarySearchTree {
     this.root = null
   }
 
+  // 中序遍历打印
+  print() {
+    let p = this.root
+    if (p) {
+      _print(p.left)
+      console.log(p.data)
+      _print(p.right)
+    }
+
+    function _print(p) {
+      if (p) {
+        _print(p.left)
+        console.log(p.data)
+        _print(p.right)
+      }
+    }
+  }
+
   find(data) {
     let p = this.root
-    while(p !== null) {
+    while (p !== null) {
       if (data < p.data) {
         p = p.left
-      } else if (p > p.data) {
+      } else if (data > p.data) {
         p = p.right
       } else {
         return p
@@ -38,18 +56,18 @@ class BinarySearchTree {
     }
     let p = this.root // p 指向根节点
     while (p) {
-      if (data > p.data) {
-        if (!p.right) {
-          p.right = node
-          return
-        }
-        p = p.right
-      } else {
+      if (data < p.data) {
         if (!p.left) {
           p.left = node
           return
         }
         p = p.left
+      } else {
+        if (!p.right) {
+          p.right = node
+          return
+        }
+        p = p.right
       }
     }
   }
@@ -99,3 +117,5 @@ class BinarySearchTree {
     }
   }
 }
+
+export default BinarySearchTree

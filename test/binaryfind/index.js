@@ -1,2 +1,2 @@
-import './BinaryFindNotRepeat'
-import './BinaryFindRepeat'
+import './BinaryFindNotRepeat.spec'
+import './BinaryFindRepeat.spec'
